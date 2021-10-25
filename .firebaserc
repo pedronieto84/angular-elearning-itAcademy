@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "elearning-vue-itacademy"
+  },
+  "targets": {
+    "elearning-vue-itacademy": {
+      "hosting": {
+        "admin": [
+          "elearning-itacademy"
+        ]
+      }
+    }
   }
 }
