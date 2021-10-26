@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddTopicComponent } from './add-topic/add-topic.component';
+import { AddTopicRoutingModule } from './add-topic-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { AddTopicComponent } from './add-topic/add-topic.component';
     AddTopicComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AddTopicRoutingModule
   ]
 })
 export class AddTopicModule { }

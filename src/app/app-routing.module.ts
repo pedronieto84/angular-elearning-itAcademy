@@ -20,6 +20,22 @@ const routes: Routes = [
     loadChildren: () => import('./pages/topics/topics.module').then( m => m.TopicsModule )
   },
   {
+    path: 'addUser',
+    loadChildren: () => import('./pages/add-user/add-user.module').then( m => m.AddUserModule )
+  },
+  {
+    path: 'addCourse',
+    loadChildren: () => import('./pages/add-course/add-course.module').then( m => m.AddCourseModule )
+  },
+  {
+    path: 'addModule',
+    loadChildren: () => import('./pages/add-module/add-module.module').then( m => m.AddModuleModule )
+  },
+  {
+    path: 'addTopic',
+    loadChildren: () => import('./pages/add-topic/add-topic.module').then( m => m.AddTopicModule )
+  },
+  {
     path: '',
     redirectTo: '/users',
     pathMatch: 'full'
