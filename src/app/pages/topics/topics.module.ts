@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopicsComponent } from './topics/topics.component';
+import { TopicsRoutingModule } from './topics-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { TopicsComponent } from './topics/topics.component';
     TopicsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TopicsRoutingModule
   ]
 })
 export class TopicsModule { }
