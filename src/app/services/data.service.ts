@@ -43,10 +43,18 @@ export class DataService {
     }
   }
 
-  /* GET: getModules recupera tots els moduls */
-  // getModules(): Observable<Module[]> {
-  //   return this.http.get<Module[]>(this.baseUrl + '/getModules');
-  // }
+  /* GET: getModules recupera:
+            Si passem paràmetre tots els mòduls d'un curs concret
+            Si no passem paràmetre tots els mòduls disponibles
+  */
+  getModules(courseId?: number): Observable<Module[]> {
+    if (courseId) {
+      return this.http.get<Module[]>(this.baseUrl + '/getModules?courseId=' + courseId);
+    }
+    else {
+      return this.http.get<Module[]>(this.baseUrl + '/getModules');
+    }
+  }
 
   /* GET: getTopics recupera tots els topics */
   getTopics() {
