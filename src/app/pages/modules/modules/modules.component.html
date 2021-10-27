@@ -1,2 +1,5 @@
 <p>modules works!</p>
 <p *ngIf="courseId">Mostrem la taula dels mòduls del curs amb id: {{courseId}}</p>
+<div *ngFor="let module of modules">
+    <p>{{module | json}}</p>
+</div>
