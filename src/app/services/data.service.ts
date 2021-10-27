@@ -15,16 +15,6 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  /* MÈTODE PER PROVAR FUNCIÓ AMB I SENSE PARÀMETRES */
-  getProva(parametre?: string): string {
-    if (parametre) {
-      return "M'has passat el text: " + parametre;
-    }
-    else {
-      return "No m'has passat cap paràmetre.";
-    }
-  }
-
   /* GET: getUsers recupera tots els usuaris */
   getUsers(userId?: UserId ) {
     
