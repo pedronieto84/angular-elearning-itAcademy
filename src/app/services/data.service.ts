@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Module, Usuari } from '../interfaces/interfaces';
+import { Course, Module, UserId, Usuari } from '../interfaces/interfaces';
 
 
 @Injectable({
@@ -15,20 +15,38 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  /* GET: getUsers recupera tots els usuaris */
-  getUsers(): Observable<Usuari[]> {
-    return this.http.get<Usuari[]>(this.baseUrl);
+  /* MÈTODE PER PROVAR FUNCIÓ AMB I SENSE PARÀMETRES */
+  getProva(parametre?: string): string {
+    if (parametre) {
+      return "M'has passat el text: " + parametre;
+    }
+    else {
+      return "No m'has passat cap paràmetre.";
+    }
   }
 
-  /* GET: getCourses recupera tots els cursos */
-  getCourses() {
+  /* GET: getUsers recupera tots els usuaris */
+  getUsers(userId?: UserId ) {
+    
+  }
 
+  /* GET: getCourses recupera:
+            Si passem paràmetre un curs concret
+            Si no passem paràmetre tots els cursos disponibles
+  */
+  getCourses(courseId?: number): Observable<Course> | Observable<Course[]> {
+    if (courseId) {
+      return this.http.get<Course>(this.baseUrl +  '/getCourses?courseId=' + courseId);
+    }
+    else {
+      return this.http.get<Course[]>(this.baseUrl + '/getCourses');
+    }
   }
 
   /* GET: getModules recupera tots els moduls */
-  getModules(): Observable<Module[]> {
-    return this.http.get<Module[]>(this.baseUrl + '/getModules');
-  }
+  // getModules(): Observable<Module[]> {
+  //   return this.http.get<Module[]>(this.baseUrl + '/getModules');
+  // }
 
   /* GET: getTopics recupera tots els topics */
   getTopics() {
