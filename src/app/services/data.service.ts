@@ -56,6 +56,11 @@ export class DataService {
     }
   }
 
+  /* GET: getModule recupera un mòdul concret en funció de la seva id */
+  getModule(moduleId: number): Observable<Module> {
+    return this.http.get<Module>(this.baseUrl + '/getModule/' + moduleId);
+  }
+
   /* GET: getTopics recupera tots els topics */
   getTopics() {
 
