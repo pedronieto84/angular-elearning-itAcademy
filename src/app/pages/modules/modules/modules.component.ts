@@ -21,12 +21,12 @@ export class ModulesComponent implements OnInit {
   ngOnInit(): void {
     this.checkRoute(); //Comprobem si hi ha courseId a la ruta
 
-    if (this.courseId) {
+    /* if (this.courseId) {
       this.getModules(parseInt(this.courseId));
     }
     else {
       this.getModules();
-    }
+    } */
   }
 
   /* Mètode que determina si hem passat alguna subruta */
@@ -35,12 +35,12 @@ export class ModulesComponent implements OnInit {
   }
 
   /* Mètode que subscriu l'observable que ens donarà l'array de tots els mòduls disponibles o de tots els mòduls d'un curs */
-  getModules(courseId?: number) {
+  /* getModules(courseId?: number) {
     if (courseId) {
       this.dataService.getModules(courseId).subscribe(modules => this.modules = modules);
     }
     else {
       this.dataService.getModules().subscribe(modules => this.modules = modules);
     }
-  }
+  } */
 }
