@@ -16,14 +16,14 @@ export class CoursesComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.getCourses();  
+    // this.getCourses();  
   }
 
   /* Mètode que subscriu l'observable que ens donarà l'array de tots els cursos disponibles */
-  getCourses() {
+  /* getCourses() {
     let observable = this.dataService.getCourses() as Observable<Course[]>;
     observable.subscribe(courses => this.courses = courses);
-  }
+  } */
 
 }
 
