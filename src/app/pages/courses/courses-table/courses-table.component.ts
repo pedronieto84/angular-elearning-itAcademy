@@ -20,7 +20,7 @@ import { DataService } from 'src/app/services/data.service';
 
 export class CoursesTableComponent implements OnInit, AfterViewInit {
   /* PROPERTIES */
-  courses: Course[] = []; //Rebrà l'array de courses del component pare
+  courses: Course[] = [];
 
   /* ANGULAR MATERIAL PROPERTIES */
   displayedColumns: string[] = [ 'courseId', 'title', 'description'];
