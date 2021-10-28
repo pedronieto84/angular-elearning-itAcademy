@@ -51,6 +51,11 @@ export class CoursesTableComponent implements OnInit, AfterViewInit {
     }
   }
 
+  clickedRows(row:any){
+    console.log(row);
+    
+  }
+
   /* Mètode que subscriu l'observable que ens donarà l'array de tots els cursos disponibles */
   getCourses() {
     let observable = this.dataService.getCourses() as Observable<Course[]>;
