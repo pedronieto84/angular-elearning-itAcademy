@@ -4,21 +4,18 @@ import { Observable } from 'rxjs';
 
 import { Course, Module, UserId, Usuari } from '../interfaces/interfaces';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class DataService {
   /* PROPERTIES */
-  private baseUrl: string = 'https://us-central1-elearning-vue-itacademy.cloudfunctions.net'; //URL base on es fan les peticions
+  private baseUrl: string =
+    'https://us-central1-elearning-vue-itacademy.cloudfunctions.net'; //URL base on es fan les peticions
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /* GET: getUsers recupera tots els usuaris */
-  getUsers(userId?: UserId ) {
-    
-  }
+  getUsers(userId?: UserId) {}
 
   /* GET: getCourses recupera:
             Si passem paràmetre un curs concret
@@ -26,9 +23,10 @@ export class DataService {
   */
   getCourses(courseId?: number): Observable<Course> | Observable<Course[]> {
     if (courseId) {
-      return this.http.get<Course>(this.baseUrl +  '/getCourses?courseId=' + courseId);
-    }
-    else {
+      return this.http.get<Course>(
+        this.baseUrl + '/getCourses?courseId=' + courseId
+      );
+    } else {
       return this.http.get<Course[]>(this.baseUrl + '/getCourses');
     }
   }
@@ -39,9 +37,10 @@ export class DataService {
   */
   getModules(courseId?: number): Observable<Module[]> {
     if (courseId) {
-      return this.http.get<Module[]>(this.baseUrl + '/getModules?courseId=' + courseId);
-    }
-    else {
+      return this.http.get<Module[]>(
+        this.baseUrl + '/getModules?courseId=' + courseId
+      );
+    } else {
       return this.http.get<Module[]>(this.baseUrl + '/getModules');
     }
   }
@@ -52,27 +51,17 @@ export class DataService {
   }
 
   /* GET: getTopics recupera tots els topics */
-  getTopics() {
-
-  }
+  getTopics() {}
 
   /* DELETE: deleteUser elimina un usuari mitjançant la seva id */
-  deleteUser(userId: number) {
-
-  }
+  deleteUser(userId: number) {}
 
   /* DELETE: deleteCourse elimina un curs mitjançant la seva id */
-  deleteCourse(courseId: number) {
-
-  }
+  deleteCourse(courseId: number) {}
 
   /* DELETE: deleteModule elimina un mòdul mitjançant la seva id */
-  deleteModule(moduleId: number) {
-
-  }
+  deleteModule(moduleId: number) {}
 
   /* DELETE: deleteTopic elimina un tòpic mitjançant la seva id */
-  deleteTopic(topicId: number) {
-    
-  }
+  deleteTopic(topicId: number) {}
 }
