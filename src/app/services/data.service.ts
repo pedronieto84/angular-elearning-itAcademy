@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-import { Course, Module, UserId, Usuari } from '../interfaces/interfaces';
+import { Course, Module, UserId, User, Topics } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +14,9 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   /* GET: getUsers recupera tots els usuaris */
-  getUsers(userId?: UserId) {}
+  getUsers() {
+    return this.http.get<User[]>(`${this.baseUrl}/getUsers`);
+  }
 
   /* GET: getCourses recupera:
             Si passem paràmetre un curs concret
@@ -51,17 +52,27 @@ export class DataService {
   }
 
   /* GET: getTopics recupera tots els topics */
-  getTopics() {}
+  getTopics() {
+    return this.http.get<Topics[]>(`${this.baseUrl}/getTopics`);
+  }
 
   /* DELETE: deleteUser elimina un usuari mitjançant la seva id */
-  deleteUser(userId: number) {}
+  deleteUser(userId: number) {
+    return this.http.delete<User>(`${this.baseUrl}/heroes/${userId}`);
+  }
 
   /* DELETE: deleteCourse elimina un curs mitjançant la seva id */
-  deleteCourse(courseId: number) {}
+  deleteCourse(courseId: number) {
+    return this.http.delete<Course>(`${this.baseUrl}/heroes/${courseId}`);
+  }
 
   /* DELETE: deleteModule elimina un mòdul mitjançant la seva id */
-  deleteModule(moduleId: number) {}
+  deleteModule(moduleId: number) {
+    return this.http.delete<Module>(`${this.baseUrl}/heroes/${moduleId}`);
+  }
 
   /* DELETE: deleteTopic elimina un tòpic mitjançant la seva id */
-  deleteTopic(topicId: number) {}
+  deleteTopic(topicId: number) {
+    return this.http.delete<Topics>(`${this.baseUrl}/heroes/${topicId}`);
+  }
 }
