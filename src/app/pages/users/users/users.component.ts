@@ -4,16 +4,17 @@ import { User } from 'src/app/interfaces/interfaces';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.sass'],
 })
 export class UsersComponent implements OnInit, AfterViewInit {
-  users!: User[];
-  displayedColumns: string[] = ['userId', 'UserName', 'userScore', 'email'];
+  user: User[] = [];
+  displayedColumns: string[] = ['userId', 'userName', 'userScore', 'email'];
 
-  dataSource: MatTableDataSource<User> = new MatTableDataSource(this.users);
+  dataSource: MatTableDataSource<User> = new MatTableDataSource(this.user);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -21,9 +22,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService
-      .getUsers()
-      .subscribe((response) => (this.users = response));
+    this.dataService.getUsers().subscribe((resp) => (this.user = resp));
   }
 
   ngAfterViewInit(): void {
