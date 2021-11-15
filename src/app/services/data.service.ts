@@ -18,6 +18,9 @@ export class DataService {
     return this.http.get<User[]>(`${this.baseUrl}/getUsers`);
   }
 
+
+
+  
   /* GET: getCourses recupera:
             Si passem paràmetre un curs concret
             Si no passem paràmetre tots els cursos disponibles
@@ -58,21 +61,21 @@ export class DataService {
 
   /* DELETE: deleteUser elimina un usuari mitjançant la seva id */
   deleteUser(userId: number) {
-    return this.http.delete<User>(`${this.baseUrl}/heroes/${userId}`);
+    return this.http.delete<User>(`${this.baseUrl}/deleteUser/${userId}`);
   }
 
   /* DELETE: deleteCourse elimina un curs mitjançant la seva id */
   deleteCourse(courseId: number) {
-    return this.http.delete<Course>(`${this.baseUrl}/heroes/${courseId}`);
+    return this.http.delete<Course>(`${this.baseUrl}/deleteCourse/${courseId}`);
   }
 
   /* DELETE: deleteModule elimina un mòdul mitjançant la seva id */
   deleteModule(moduleId: number) {
-    return this.http.delete<Module>(`${this.baseUrl}/heroes/${moduleId}`);
+    return this.http.delete<Module>(`${this.baseUrl}/deleteModule/${moduleId}`);
   }
 
   /* DELETE: deleteTopic elimina un tòpic mitjançant la seva id */
   deleteTopic(topicId: number) {
-    return this.http.delete<Topics>(`${this.baseUrl}/heroes/${topicId}`);
+    return this.http.delete<Topics>(`${this.baseUrl}/deleteTopic/${topicId}`);
   }
 }
