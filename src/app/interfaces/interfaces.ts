@@ -85,7 +85,7 @@ export type Topics = {
   topicName: string;
 };
 
-export type Usuari = {
+export type User = {
   email: string;
   userId: UserId;
   userName: string;
