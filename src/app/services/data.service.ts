@@ -14,13 +14,10 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   /* GET: getUsers recupera tots els usuaris */
-  getUsers() {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/getUsers`);
   }
 
-
-
-  
   /* GET: getCourses recupera:
             Si passem paràmetre un curs concret
             Si no passem paràmetre tots els cursos disponibles
@@ -55,7 +52,7 @@ export class DataService {
   }
 
   /* GET: getTopics recupera tots els topics */
-  getTopics() {
+  getTopics(): Observable<Topics[]> {
     return this.http.get<Topics[]>(`${this.baseUrl}/getTopics`);
   }
 
