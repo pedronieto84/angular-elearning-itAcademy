@@ -52,8 +52,8 @@ export class DataService {
   }
 
   /* GET: getTopics recupera tots els topics */
-  getTopics(): Observable<Topics> {
-    return this.http.get<Topics>(`${this.baseUrl}/getTopics`);
+  getTopics(): Observable<Topics[]> {
+    return this.http.get<Topics[]>(`${this.baseUrl}/getTopics`);
   }
 
   /* DELETE: deleteUser elimina un usuari mitjançant la seva id */
