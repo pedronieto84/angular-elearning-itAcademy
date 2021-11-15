@@ -22,7 +22,9 @@ export class UsersComponent implements OnInit, AfterViewInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getUsers().subscribe((resp) => (this.user = resp));
+    this.dataService
+      .getUsers()
+      .subscribe((resp) => (this.dataSource.data = resp as User[]));
   }
 
   ngAfterViewInit(): void {
