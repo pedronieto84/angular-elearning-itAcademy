@@ -14,7 +14,7 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   /* GET: getUsers recupera tots els usuaris */
-  getUsers() {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/getUsers`);
   }
 
@@ -52,27 +52,27 @@ export class DataService {
   }
 
   /* GET: getTopics recupera tots els topics */
-  getTopics() {
-    return this.http.get<Topics[]>(`${this.baseUrl}/getTopics`);
+  getTopics(): Observable<Topics> {
+    return this.http.get<Topics>(`${this.baseUrl}/getTopics`);
   }
 
   /* DELETE: deleteUser elimina un usuari mitjançant la seva id */
   deleteUser(userId: number) {
-    return this.http.delete<User>(`${this.baseUrl}/heroes/${userId}`);
+    return this.http.delete<User>(`${this.baseUrl}/deleteUser/${userId}`);
   }
 
   /* DELETE: deleteCourse elimina un curs mitjançant la seva id */
   deleteCourse(courseId: number) {
-    return this.http.delete<Course>(`${this.baseUrl}/heroes/${courseId}`);
+    return this.http.delete<Course>(`${this.baseUrl}/deleteCourse/${courseId}`);
   }
 
   /* DELETE: deleteModule elimina un mòdul mitjançant la seva id */
   deleteModule(moduleId: number) {
-    return this.http.delete<Module>(`${this.baseUrl}/heroes/${moduleId}`);
+    return this.http.delete<Module>(`${this.baseUrl}/deleteModule/${moduleId}`);
   }
 
   /* DELETE: deleteTopic elimina un tòpic mitjançant la seva id */
   deleteTopic(topicId: number) {
-    return this.http.delete<Topics>(`${this.baseUrl}/heroes/${topicId}`);
+    return this.http.delete<Topics>(`${this.baseUrl}/deleteTopic/${topicId}`);
   }
 }
