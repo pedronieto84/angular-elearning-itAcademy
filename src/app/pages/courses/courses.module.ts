@@ -6,18 +6,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesTableComponent } from './courses-table/courses-table.component';
 
-
-
 @NgModule({
-  declarations: [
-    CoursesComponent,
-    CoursesTableComponent
-  ],
+  declarations: [CoursesComponent, CoursesTableComponent],
   imports: [
     CommonModule,
     CoursesRoutingModule,
@@ -25,7 +21,9 @@ import { CoursesTableComponent } from './courses-table/courses-table.component';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
-  ]
+    MatSortModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
 })
-export class CoursesModule { }
+export class CoursesModule {}
