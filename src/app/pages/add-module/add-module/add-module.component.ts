@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-add-module',
   templateUrl: './add-module.component.html',
@@ -24,7 +25,8 @@ export class AddModuleComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private dataService: DataService
+    private dataService: DataService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -45,8 +47,13 @@ export class AddModuleComponent implements OnInit {
       return;
     }
 
-    this.dataService
-      .addModule(this.myForm.value)
-      .subscribe((resp) => console.log(resp));
+    this.dataService.addModule(this.myForm.value).subscribe();
+    this.seeSnackBar('mòdul afegit');
+  }
+
+  seeSnackBar(alert: string) {
+    this.snackBar.open(alert, 'Ok', {
+      duration: 2000,
+    });
   }
 }
