@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-add-module',
   templateUrl: './add-module.component.html',
@@ -10,7 +11,7 @@ export class AddModuleComponent implements OnInit {
   /* PROPERTIES */
   queryCourse?: string | null;
 
-  miFormulario: FormGroup = this.fb.group({
+  myForm: FormGroup = this.fb.group({
     moduleId: [, [Validators.required, Validators.min(0)]],
     topics: [, [Validators.required, Validators.minLength(3)]],
     title: [, [Validators.required, Validators.minLength(3)]],
@@ -22,38 +23,30 @@ export class AddModuleComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dataService: DataService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((data) => {
       this.queryCourse = data.course;
     });
-    this.miFormulario.reset({
-      moduleId: '',
-      topics: '',
-      title: '',
-      description: '',
-      imageUrl: '',
-      route: '',
-      courseId: '',
-    });
   }
 
-  campoEsValido(campo: string) {
+  isValid(field: string) {
     return (
-      this.miFormulario.controls[campo].errors &&
-      this.miFormulario.controls[campo].touched
+      this.myForm.controls[field].errors && this.myForm.controls[field].touched
     );
   }
 
-  guardar() {
-    if (this.miFormulario.invalid) {
-      this.miFormulario.markAllAsTouched();
+  save() {
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
       return;
     }
 
-    console.log(this.miFormulario.value);
-    this.miFormulario.reset();
+    this.dataService
+      .addModule(this.myForm.value)
+      .subscribe((resp) => console.log(resp));
   }
 }
