@@ -75,4 +75,8 @@ export class DataService {
   deleteTopic(topicId: number) {
     return this.http.delete<Topics>(`${this.baseUrl}/deleteTopic/${topicId}`);
   }
+
+  addModule(module: Module): Observable<Module> {
+    return this.http.post<Module>(`${this.baseUrl}/createModule`, module);
+  }
 }
