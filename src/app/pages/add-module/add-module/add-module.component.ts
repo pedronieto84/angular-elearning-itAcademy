@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Module } from 'src/app/interfaces/interfaces';
 @Component({
   selector: 'app-add-module',
   templateUrl: './add-module.component.html',
@@ -17,7 +18,7 @@ export class AddModuleComponent implements OnInit {
     topics: [, [Validators.required, Validators.minLength(3)]],
     title: [, [Validators.required, Validators.minLength(3)]],
     description: [, [Validators.required, Validators.minLength(3)]],
-    imageUrl: [, [Validators.required, Validators.minLength(3)]],
+    imgUrl: [, [Validators.required, Validators.minLength(3)]],
     route: [, [Validators.required, Validators.minLength(3)]],
     courseId: [, [Validators.required, Validators.min(0)]],
   });
@@ -47,8 +48,9 @@ export class AddModuleComponent implements OnInit {
       return;
     }
 
-    this.dataService.addModule(this.myForm.value).subscribe();
-    this.seeSnackBar('mòdul afegit');
+    this.dataService
+      .addModule(this.myForm.value)
+      .subscribe(() => this.seeSnackBar('mòdul afegit'));
   }
 
   seeSnackBar(alert: string) {
