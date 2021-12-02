@@ -1,5 +1,6 @@
 /* Angular Imports */
 import {AfterViewInit, Component, ViewChild, OnInit, Input} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 /* Angular Material Imports */
 import {MatPaginator} from '@angular/material/paginator';
@@ -30,7 +31,10 @@ export class CoursesTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getCourses();
@@ -51,8 +55,13 @@ export class CoursesTableComponent implements OnInit, AfterViewInit {
     }
   }
 
-  clickedRows(row:any){
-    console.log(row);
+  /* Mètode activat per event click a una row */
+  navigateToModules(row: any){
+    //Guardem la id
+    let courseId: number = row.courseId;
+
+    //Naveguem a courses/courseId - passem ([courseId], el path actual) 
+    this.router.navigate([courseId.toString()], {relativeTo: this.activatedRoute});
     
   }
 
